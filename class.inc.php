@@ -1,5 +1,5 @@
-<?php
- /* Obs³uga strony po stronie serwera */
+ï»¿<?php
+ /* ObsÅ‚uga strony po stronie serwera */
 class baza{
 	var $db;
 	var $collection;
@@ -23,7 +23,7 @@ class db{
 	}
 	public function Test() {
 		var_dump($this->baza->runCommand(array('buildInfo' => 1)));
-		// Wyœwietlanie wszystkich wyników z kolekcji 'kody3'
+		// WyÅ›wietlanie wszystkich wynikÃ³w z kolekcji 'kody3'
 		// foreach($this->baza->find() as $one) {
 			// var_dump($one);
 		// }

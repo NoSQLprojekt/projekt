@@ -1,4 +1,4 @@
-<?php
+﻿<?php
  /* Plik widoku */
 require('class.inc.php');
 
