@@ -1,9 +1,29 @@
 ﻿<?php
- /* Obsługa strony po stronie serwera */
+/* Obsługa strony po stronie serwera */
+// Obiekt osoba
+class Osoba{
+	public $imie;
+	public $nazwisko;
+	public $telefon;
+	public $adres;
+	public $email;
+	public function __construct($imie = '', $nazwisko = '', $telefon = '', $adres = '', $email = '') {
+		$this->imie = $imie;
+		$this->nazwisko = $nazwisko;
+		$this->telefon = $telefon;
+		$this->adres = $adres;
+		$this->email = $email;
+	}
+	public function getVars() {
+		 return get_object_vars($this);
+	}
+}
+// Model baza którego jedynym zadaniem jest praca z bazą i zwracanie wyników
 class baza{
 	var $db;
 	var $collection;
 	var $dbcol;
+	var $model;
 	public function connect() {
 		$m = new Mongo();
 		$this->db = $m->selectDB('test');
@@ -30,7 +50,8 @@ class baza{
 	}
 	
 }
-class db{
+class Test{
+	public $baza;
 	public function __construct() {
 		$this->baza = new baza();
 		$this->baza->collection = 'test';
@@ -66,8 +87,49 @@ class db{
 		//var_dump($this->baza->ownQuery("findOne")); /** Własne polecenie, jeżeli brakuje czegoś w klasie baza co chcemy użyć to wystarczy, **/
 													/** że wpiszemy polecenie jak w przykładzie obok, tu akurat nie ma w klasie findOne() **/
 	}
+	public function modelTestCrud() {
+		// Dodawanie przy użyciu naszego obiektu Osoba
+		// dodając z widoku dodajemy dane jako tablica która potem jest zmieniona na obiekt, przykład w index.php
+		$this->baza->remove();
+		$this->baza->insert(new Osoba("Michał", "Jackowski"));
+		// dopiszmy nr telefonu do naszej osoby
+		$this->baza->update(new Osoba("Michał", "Jackowski"), new Osoba("Michał", "Jackowski", "654123123"));
+		$x = iterator_to_array($this->baza->find());
+		var_dump($x);
+	}
 }
-class User{
-
+// kontroler db, to jego wywołujemy z pliku widoku
+// ogólnie powinniśmy tutaj renderować pliki widoku jak to jest w mvc ale nie zdąże tego ogarnąć do środy :p
+class db{
+	var $baza;
+	public function __construct() {
+		$this->baza = new baza();
+		$this->baza->collection = 'projekt';
+		$this->baza->connect();
+	}
+	// zamieniamy tablicę na obiekt tak, że pola obiektu muszą się zgadzać z kluczami tablicy
+	public function createObjectFromArr($arr) {
+		$osoba = new Osoba();
+		foreach($osoba->getVars() as $key => $val) {
+			@$osoba->{$key} = ($arr[$key])?($arr[$key]):'';
+		}
+		return $osoba;
+	}
+	// zakładamy że otrzymujemy tablice w postaci Imie => JakiesImie, Nazwisko => JakiesNazwisko itd
+	public function addOsoba($arr) {
+		$this->baza->insert($this->createObjectFromArr($arr));	
+	}
+	public function updateOsoba($which, $new) {
+		$this->baza->update($this->createObjectFromArr($which), $this->createObjectFromArr($new));
+	}
+	public function deleteOsoba($arr = array()) {
+		$this->baza->remove($this->createObjectFromArr($arr));
+	}
+	public function listAllOsoby($where = "") {
+		return iterator_to_array($this->baza->find($where));
+	}
+	public function removeAll() {
+		$this->baza->remove();
+	}
 }
 ?>
