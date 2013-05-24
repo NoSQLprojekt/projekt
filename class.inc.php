@@ -115,6 +115,15 @@ class db{
 		}
 		return $osoba;
 	}
+	public function createObjectFromArr2($arr) {
+	//var_dump($arr);
+		$i = 0;
+		foreach($arr as $key => $val) {
+			$osoba = new Osoba();
+			$ret[$key] = $this->createObjectFromArr($val);
+		}
+		return $ret;
+	}
 	// zakładamy że otrzymujemy tablice w postaci Imie => JakiesImie, Nazwisko => JakiesNazwisko itd
 	public function addOsoba($arr) {
 		$this->baza->insert($this->createObjectFromArr($arr));	
@@ -125,8 +134,11 @@ class db{
 	public function deleteOsoba($arr = array()) {
 		$this->baza->remove($this->createObjectFromArr($arr));
 	}
+	public function deleteId($arr) {
+		$this->baza->remove($arr);
+	}
 	public function listAllOsoby($where = "") {
-		return iterator_to_array($this->baza->find($where));
+		return $this->createObjectFromArr2(iterator_to_array($this->baza->find($where)));
 	}
 	public function removeAll() {
 		$this->baza->remove();
