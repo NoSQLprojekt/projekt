@@ -1,4 +1,6 @@
 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script src="js/jquery.metadata.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
 	<script>
 		$(document).ready(function () {
 			$(".zapisz").hide();
@@ -19,6 +21,11 @@
 				});
 				$.post('edit.php?id=' + $(this).attr('key'), osoba);
 			});
+			$("#lista").tablesorter({
+				widgets: ['zebra'],
+				sortList:[[1,0]],
+				headers:{0:{sorter: false}, 3:{sorter:false}, 4:{sorter:false}, 5:{sorter:false}}
+			}); 
 		});
 </script>
 <div id="content">
@@ -32,18 +39,23 @@
 					<h2 class="title">Lista kontaków</h2>
 								
 										<div id="listuser">
-											<table class="standard">
+											<table id="lista" class="standard tablesorter">
+											<thead>
 												<tr>
 													<th></th>
 													<th>Nazwisko</th>
 													<th>Imię</th>
 													
-													<th colspan="3">Akcje</th>
+													<th>Akcje</th>
+													<th></th>
+													<th></th>
 												</tr>
+											</thead>
+											<tbody>
 
-												<?php $i=1; foreach($osoby as $key => $val) {	
+												<?php foreach($osoby as $key => $val):	
 												$osoba = $val; ?>
-												<tr style='background-color:<?= ($i++%2==0)?'#eeeeee':'#ffffff'; ?>'>
+												<tr>
 												<td><img src="User-icon.png"  alt="" /></td>
 												<td class="val" name="nazwisko"><?= $osoba->nazwisko; ?></td>
 												<td class="val" name="imie"><?= $osoba->imie; ?></td>
@@ -53,8 +65,8 @@
 												
 												
 												</tr>
-												<?php }  ?>
-							
+												<?php endforeach;  ?>
+											</tbody>
 											</table>
 										
 										</div>
