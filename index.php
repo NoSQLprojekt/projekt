@@ -11,9 +11,9 @@
 <div id="menu-wrapper">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="#">Strona Główna</a></li>
+			<li class="current_page_item"><a href="?">Strona Główna</a></li>
 			<li><a href="#">Statystyki</a></li>
-			<li><a href="#">Logowanie</a></li>
+			<li><a href="?login">Logowanie</a></li>
 		</ul>
 	</div>
 	<!-- end #menu -->
@@ -24,25 +24,18 @@
 	<div id="page">
 		<div id="page-bgtop">
 			<div id="page-bgbtm">
-				<div id="content">
-					<div class="post">
-						
-							<h2 class="title"><a href="#">Witamy na naszej stronie</a></h2>
-							<div style="clear: both;">&nbsp;</div>
-							<div class="entry">
-								<p>Aby zacząć korzystać z książki adresowej zaloguj się lub zarejestruj.</p>
-							</div>
-						
-					</div>
-					
-					<div style="clear: both;">&nbsp;</div>
-				</div>
-				<!-- end #content -->
-				<div id="sidebar">
-					<img src="Address-book.png" width="400" height="400" alt="" />
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
+				<?php
+					if(empty($_SERVER['QUERY_STRING'])) {
+							include('main.php');
+					} else {
+						if(file_exists($_SERVER['QUERY_STRING'] .'.php')) {
+							include($_SERVER['QUERY_STRING'] .'.php');
+						}
+						else {
+							echo 'Błąd 404 nie ma takiej strony';
+						}
+					}
+				?>
 			</div>
 		</div>
 	</div>

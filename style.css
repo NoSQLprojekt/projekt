@@ -14,7 +14,7 @@ h1, h2, h3 {
 	
 	font-family: 'Arvo', serif;
 	font-weight: normal;
-	color: #0285CE;
+	color: #000000;
 }
 
 h1 {
@@ -45,43 +45,7 @@ a {
 a:hover {
 }
 
-/* Login */
 
-#login {
-	width: 320px;
-	height: 60px;
-	padding: 0px;
-}
-
-#login form {
-	margin: 0px;
-	padding: 0px;
-}
-
-#login fieldset {
-	margin: 0;
-	padding: 0;
-	border: none;
-}
-
-#login-text {
-	width: 250px;
-	outline: none;
-	background: #F5F0E7;
-	border: 1px solid #D7D0C0;
-	padding: 10px;
-	text-transform: lowercase;
-	font: normal 14px Arial, Helvetica, sans-serif;
-	color: #454545;
-}
-
-#login-submit {
-	width: 62px;
-	height: 22px;
-	display: none;
-	border: none;
-	color: #FFFFFF;
-}
 
 /* Menu */
 
@@ -157,14 +121,14 @@ a:hover {
 	border-width:1px;
 	border-color: lightgray;
 	margin-top: 30px;
-	padding: 60px 30px 210px 100px;
+	padding: 10px 10px 0 100px;
 	
 }
 
 .post .title {
 	height: 38px;
 	margin-bottom: 10px;
-	padding: 17px 0 0 60px;
+	padding: 0px 0 0 0px;
 	font-size: 32px;
 }
 
@@ -184,6 +148,79 @@ width: 300px;
 padding-left: 60px;
 padding-top:30px;
 }
+
+#login{
+width: 380px;
+height: 300px;
+border:1px solid;
+margin-top:35px;
+border-color: lightgrey;
+padding-left:120px;
+
+}
+
+#mainsite{
+
+width: 480px;
+height: 140px;
+border:1px solid;
+margin-top:7px;
+border-color: lightgrey;
+padding-left:20px;
+padding-top: 80px;
+
+
+}
+
+
+#login p {
+padding-bottom: 10px;
+padding-top:15px;
+
+
+}
+
+input, textarea {   
+    
+	padding:9px;
+    border: solid 1px #E5E5E5;  
+    outline: 0;  
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;  
+    width: 200px;  
+    background: #FFFFFF url('bg_form.png') left top repeat-x;  
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));  
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);  
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    }  
+  
+textarea {   
+    width: 400px;  
+    max-width: 400px;  
+    height: 150px;  
+    line-height: 150%;  
+    }  
+  
+input:hover, textarea:hover,  
+input:focus, textarea:focus {   
+    border-color: #C9C9C9;   
+    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;  
+    }  
+  
+
+  
+.submit input {  
+    width: auto;  
+	margin-top:20px;
+    padding: 9px 20px;  
+    background: #000000;  
+    border: 0;  
+    font-size: 14px;  
+    color: #FFFFFF;  
+    -moz-border-radius: 5px;  
+    -webkit-border-radius: 5px;  
+    }
 
 
 
