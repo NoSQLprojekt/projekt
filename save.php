@@ -8,6 +8,10 @@ if(isset($_GET['add'])){
 	}
 	
 }
+if(!empty($_GET['remove'])) {
+$db->deleteId(array("_id" => new MongoId($_GET['remove'])));
+header("Location: index.php");
+}
 
 
 

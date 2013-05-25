@@ -15,6 +15,7 @@
 			<li><a href="#">Statystyki</a></li>
 			<li><a href="?login">Logowanie</a></li>
 			<li><a href="?add">Dodaj kontakt</a></li>
+			<li><a href="?list">Lista kontaktów</a></li>
 			
 		</ul>
 	</div>

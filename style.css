@@ -154,6 +154,12 @@ width: 300px;
 padding-left: 60px;
 padding-top:30px;
 }
+td img {
+width:32px;
+height:32px;
+padding-top: 5px;
+padding-left: 0px;
+}
 
 #login{
 width: 380px;
@@ -176,6 +182,53 @@ padding-left:120px;
 
 
 }
+
+table {
+    margin: 10px 0;
+    border: #999 1px solid;
+    width: 700px;
+}
+
+table.standard th {
+    background: #CCCCCC;
+    font-weight: bold;
+    padding: 5px 3px;
+}
+
+table.standard th#akc {
+    background: #CCCCCC;
+    font-weight: bold;
+    padding: 5px 3px;
+ 
+}
+
+
+
+table.standard td {
+    border-top: #999 1px solid;
+    padding: 5px 1px;
+    text-align:center;
+    width: 5%;
+}
+
+table.standard td#akcje {
+    border-top: #999 1px solid;
+    padding: 5px 10px;
+  
+    text-align:center
+}
+
+
+#listuser{
+width: 760px;
+
+border:1px solid;
+margin-top:35px;
+border-color: lightgrey;
+padding-left:60px;
+}
+
+
 #mainsite{
 
 width: 480px;
