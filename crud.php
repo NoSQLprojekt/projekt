@@ -1,4 +1,32 @@
-﻿<?php
+﻿<html>
+<head>
+	<title>CRUD</title>
+	<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$(".zapisz").hide();
+			$(".edytuj").click(function() {
+				$(this).parent().parent().find(".zapisz").show();
+				$(this).parent().parent().children(".val").each(function(i) {
+					var name = $(this).attr('name'), value = $(this).html();
+					$(this).html('<input type="text" value="' + value + '" name="' + name + '">');
+				});
+			});
+			$(".zapisz").click(function() {
+				var osoba = new Object();
+				$(this).hide();
+				$(this).parent().parent().children(".val").each(function(i) {
+					var value = $(this).find("input").val(), name = $(this).find("input").attr('name');
+					osoba[name] = value;
+					$(this).html(value);
+				});
+				$.post('edit.php?id=' + $(this).attr('key'), osoba);
+			});
+		});
+	</script>
+</head>
+<body>
+<?php
 require('class.inc.php');
 $db = new db();
 if(empty($_SERVER['QUERY_STRING'])) {
@@ -9,13 +37,15 @@ if(empty($_SERVER['QUERY_STRING'])) {
 	$osoby = $db->listOsoby();
 	foreach($osoby as $key => $val) {
 		$osoba = $val;
-		echo '<tr><td>'.$osoba->imie.'</td>
-		<td>'.$osoba->nazwisko.'</td>
-		<td>'.$osoba->telefon.'</td>
-		<td>'.$osoba->adres.'</td>
-		<td>'.$osoba->email.'</td>
+		echo '<tr><td class="val" name="imie">'.$osoba->imie.'</td>
+		<td class="val" name="nazwisko">'.$osoba->nazwisko.'</td>
+		<td class="val" name="telefon">'.$osoba->telefon.'</td>
+		<td class="val" name="adres">'.$osoba->adres.'</td>
+		<td class="val" name="email">'.$osoba->email.'</td>
 		<td><a href="?remove='.$key.'">Usuń</td>
+		<td><a href="#" class="edytuj">Edytuj inline</a></td>
 		<td><a href="?update='.$key.'">Edytuj</td>
+		<td><a href="#" key="'.$key.'" class="zapisz">Zapisz</a></td>
 		</tr>';
 	}
 	echo '</table>';
@@ -55,3 +85,5 @@ if(!empty($_GET['update'])) {
 }
 
 ?>
+</body>
+</html>
