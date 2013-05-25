@@ -143,6 +143,12 @@ a:hover {
 	text-align: justify;
 }
 
+#sidebar1 img{
+width: 300px;
+padding-left: 60px;
+padding-top:170px;
+}
+
 img{
 width: 300px;
 padding-left: 60px;
@@ -159,6 +165,17 @@ padding-left:120px;
 
 }
 
+#adduser{
+width: 380px;
+
+border:1px solid;
+margin-top:35px;
+border-color: lightgrey;
+padding-left:120px;
+
+
+
+}
 #mainsite{
 
 width: 480px;
@@ -180,9 +197,17 @@ padding-top:15px;
 
 }
 
+#adduser p {
+padding-bottom: 10px;
+padding-top:15px;
+
+
+}
+
 input, textarea {   
     
 	padding:9px;
+	
     border: solid 1px #E5E5E5;  
     outline: 0;  
     font: normal 13px/100% Verdana, Tahoma, sans-serif;  

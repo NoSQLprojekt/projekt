@@ -14,6 +14,8 @@
 			<li class="current_page_item"><a href="?">Strona Główna</a></li>
 			<li><a href="#">Statystyki</a></li>
 			<li><a href="?login">Logowanie</a></li>
+			<li><a href="?add">Dodaj kontakt</a></li>
+			
 		</ul>
 	</div>
 	<!-- end #menu -->
