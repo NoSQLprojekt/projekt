@@ -2,17 +2,19 @@
 /* Obsługa strony po stronie serwera */
 // Obiekt osoba
 class Osoba{
+	public $userId;
 	public $imie;
 	public $nazwisko;
 	public $telefon;
 	public $adres;
 	public $email;
-	public function __construct($imie = '', $nazwisko = '', $telefon = '', $adres = '', $email = '') {
+	public function __construct($imie = '', $nazwisko = '', $telefon = '', $adres = '', $email = '', $userId = '') {
 		$this->imie = $imie;
 		$this->nazwisko = $nazwisko;
 		$this->telefon = $telefon;
 		$this->adres = $adres;
 		$this->email = $email;
+		$this->userId = $userId;
 	}
 	public function getVars() {
 		 return get_object_vars($this);
