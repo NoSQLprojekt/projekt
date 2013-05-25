@@ -5,7 +5,7 @@
 			<div style="clear: both;">&nbsp;</div>
 			<div id="entry">
 				<div id="mainsite">
-				<p>Aby zacząć korzystać z książki adresowej <a href="?login">zaloguj się</a> lub zarejestruj.</p>
+				<p>Aby zacząć korzystać z książki adresowej <a href="?login">zaloguj się</a> lub <a href="?register">zarejestruj</a>.</p>
 				</div>
 			</div>
 		
