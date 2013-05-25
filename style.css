@@ -149,11 +149,24 @@ padding-left: 60px;
 padding-top:170px;
 }
 
+#sidebar3 img{
+width: 300px;
+padding-left: 60px;
+padding-top:140px;
+}
+
+#sidebar2 img{
+width: 300px;
+padding-left: 60px;
+padding-top:60px;
+}
+
 img{
 width: 300px;
 padding-left: 60px;
 padding-top:30px;
 }
+
 td img {
 width:32px;
 height:32px;
@@ -163,7 +176,7 @@ padding-left: 0px;
 
 #login{
 width: 380px;
-height: 300px;
+height: 370px;
 border:1px solid;
 margin-top:35px;
 border-color: lightgrey;
