@@ -48,6 +48,9 @@ class baza{
 	{
 		return $this->dbcol->remove($criteria, $options);
 	}
+	public function findOne($query = array(), $fields = array()) {
+		return $this->dbcol->findOne($query, $fields);
+	}
 	
 }
 class Test{
@@ -107,16 +110,18 @@ class db{
 		$this->baza->collection = 'projekt';
 		$this->baza->connect();
 	}
-	// zamieniamy tablicę na obiekt tak, że pola obiektu muszą się zgadzać z kluczami tablicy
+	// zamieniamy tablicę na obiekt tak, że do pola obiektu o danej nazwie 'x' przypisujemy wartość
+	// z tablicy $arr o kluczu o tej samej nazwie 'x'
 	public function createObjectFromArr($arr) {
 		$osoba = new Osoba();
 		foreach($osoba->getVars() as $key => $val) {
+			// ta linijka odpowiada za przepisanie tablicy do obiektu
 			@$osoba->{$key} = ($arr[$key])?($arr[$key]):'';
 		}
 		return $osoba;
 	}
+	// zamieniamy tablicę dwuwymiarową na tablicę obiektów
 	public function createObjectFromArr2($arr) {
-	//var_dump($arr);
 		$i = 0;
 		foreach($arr as $key => $val) {
 			$osoba = new Osoba();
@@ -131,17 +136,27 @@ class db{
 	public function updateOsoba($which, $new) {
 		$this->baza->update($this->createObjectFromArr($which), $this->createObjectFromArr($new));
 	}
+	public function updateOsobaById($id, $new) {
+		$this->baza->update($id, $this->createObjectFromArr($new));
+	}
 	public function deleteOsoba($arr = array()) {
 		$this->baza->remove($this->createObjectFromArr($arr));
 	}
 	public function deleteId($arr) {
 		$this->baza->remove($arr);
 	}
-	public function listAllOsoby($where = "") {
+	public function listOsoby($where = "") {
 		return $this->createObjectFromArr2(iterator_to_array($this->baza->find($where)));
 	}
 	public function removeAll() {
 		$this->baza->remove();
+	}
+	public function returnModel() {
+		$osoba = new Osoba();
+		return $osoba->getVars();
+	}
+	public function getOneOsoba($criteria = array(), $fields = array()) {
+		return $this->createObjectFromArr($this->baza->findOne($criteria, $fields));
 	}
 }
 ?>
