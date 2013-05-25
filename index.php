@@ -30,8 +30,9 @@
 					if(empty($_SERVER['QUERY_STRING'])) {
 							include('main.php');
 					} else {
-						if(file_exists($_SERVER['QUERY_STRING'] .'.php')) {
-							include($_SERVER['QUERY_STRING'] .'.php');
+						$query = explode('&', $_SERVER['QUERY_STRING']);
+						if(file_exists($query[0] .'.php')) {
+							include($query[0] .'.php');
 						}
 						else {
 							echo 'Błąd 404 nie ma takiej strony';
