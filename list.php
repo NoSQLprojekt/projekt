@@ -20,6 +20,9 @@
 					$(this).html(value);
 				});
 				$.post('edit.php?id=' + $(this).attr('key'), osoba);
+				$("#lista").trigger("update"); 
+				var sorting = [[1,0]];
+				$("#lista").trigger("sorton",[sorting]); 
 			});
 			$("#lista").tablesorter({
 				widgets: ['zebra'],
