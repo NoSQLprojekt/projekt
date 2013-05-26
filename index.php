@@ -36,7 +36,8 @@
 							include('/pages/'.$query[0] .'.php');
 						}
 						else {
-							echo 'Błąd 404 nie ma takiej strony';
+							include('/pages/page404.php');
+							//echo 'Błąd 404 nie ma takiej strony';
 						}
 					}
 				?>
