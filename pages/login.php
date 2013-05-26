@@ -5,7 +5,7 @@
 			
 			<div class="entry">
 					<h2 class="title">Logowanie</h2>
-								<form method="post" action="index.php?login">
+								<form method="post" action="index.php?save&login">
 									<div id="login">
 										
 										<p>Login:</p>
@@ -14,7 +14,8 @@
 										<input type="password" name="haslo" id="login-text" value="" />
 										<p><a href="?register">zarejestruj się</a></p>
 										<p class="submit">  
-											<input type="submit" value="Zaloguj" />  
+											  
+											 <input type="submit" name="submit" value="Zaloguj" />
 										</p>
 									</div>
 								</form>

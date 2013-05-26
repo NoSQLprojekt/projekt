@@ -26,6 +26,18 @@ if(isset($_GET['edit']) && isset($_GET['id'])) {
 	$db->updateOsobaById(array("_id" => new MongoId($_GET['id'])), $_POST);
 }
 
+if(isset($_GET['login']) && isset($_POST['submit'])){
+	$login=$_POST['login'];
+	$haslo=$_POST['haslo'];
+	if ($dbuser->checkLoginPassword($_POST['login'], $_POST['haslo']) == 0) {
+		print "Nieprawidłowe Dane!!!";
+	}
+	else {
+		$_SESSION["login"]=$login;
+		print("Witaj na stronie <b>".$_SESSION["login"]."</b>\n");
+		print("<a href=\"logout.php"."\">Logout</a>");
+	}
+}
 
 
 
