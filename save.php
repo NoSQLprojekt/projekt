@@ -1,6 +1,7 @@
 <?php
 require('class.inc.php');
 $db = new db(); 
+$dbuser = new dbUser();
 if(isset($_GET['add'])){
 	if(isset($_POST['submit'])) {
 		$db->addOsoba($_POST);
@@ -12,9 +13,9 @@ if(!empty($_GET['remove'])) {
 $db->deleteId(array("_id" => new MongoId($_GET['remove'])));
 header("Location: index.php");
 }
-if(isset($_GET['addUser']) && isset($_POST['submit']) {
-	if ($user->checkLogin($login) == 0) {
-		$user->add($_POST);
+if(isset($_GET['addUser']) && isset($_POST['submit'])) {
+	if ($dbuser->checkLogin($_POST['login']) == 0) {
+		$dbuser->add($_POST);
 		print "Udana rejestracja. Mozesz sie teraz zalogowac";
 	}
 	else {
