@@ -59,7 +59,7 @@
 												<?php foreach($osoby as $key => $val):	
 												$osoba = $val; ?>
 												<tr>
-												<td><img src="User-icon.png"  alt="" /></td>
+												<td><img src="img/User-icon.png"  alt="" /></td>
 												<td class="val" name="nazwisko"><?= $osoba->nazwisko; ?></td>
 												<td class="val" name="imie"><?= $osoba->imie; ?></td>
 												<td><a href="save.php?remove=<?=$key?>">Usuń</td>

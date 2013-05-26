@@ -32,7 +32,7 @@
 </div>
 <!-- end #content -->
 <div id="sidebar3">
-	<img src="icon-512.png" width="400" height="400" alt="" />
+	<img src="img/icon-512.png" width="400" height="400" alt="" />
 </div>
 <!-- end #sidebar -->
 <div style="clear: both;">&nbsp;</div>

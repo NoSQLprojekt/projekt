@@ -27,7 +27,7 @@
 </div>
 <!-- end #content -->
 <div id="sidebar2">
-	<img src="icon_client_login.png" width="400" height="400" alt="" />
+	<img src="img/icon_client_login.png" width="400" height="400" alt="" />
 </div>
 <!-- end #sidebar -->
 <div style="clear: both;">&nbsp;</div>
