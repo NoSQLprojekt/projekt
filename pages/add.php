@@ -5,7 +5,7 @@
 			
 			<div class="entry">
 					<h2 class="title">Dodaj kontakt</h2>
-								<form method="post" action="save.php?add">
+								<form method="post" action="index.php?save&add">
 									<div id="adduser">
 										
 										<p>Imię:</p>

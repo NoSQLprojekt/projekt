@@ -13,9 +13,9 @@
 										<p>Email:</p>
 										<input type="text" name="email" id="login-text" value="" />
 										<p>Hasło:</p>
-										<input type="text" name="haslo" id="login-text" value="" />
+										<input type="password" name="haslo" id="login-text" value="" />
 										<p>Powtórz hasło:</p>
-										<input type="text" name="haslo2" id="login-text" value="" />
+										<input type="password" name="haslo2" id="login-text" value="" />
 										
 										
 										<p class="submit">  

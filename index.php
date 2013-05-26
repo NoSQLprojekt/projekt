@@ -29,11 +29,11 @@
 			<div id="page-bgbtm">
 				<?php
 					if(empty($_SERVER['QUERY_STRING'])) {
-							include('main.php');
+							include('/pages/main.php');
 					} else {
 						$query = explode('&', $_SERVER['QUERY_STRING']);
-						if(file_exists($query[0] .'.php')) {
-							include($query[0] .'.php');
+						if(file_exists('pages/'.$query[0] .'.php')) {
+							include('/pages/'.$query[0] .'.php');
 						}
 						else {
 							echo 'Błąd 404 nie ma takiej strony';

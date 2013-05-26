@@ -1,7 +1,7 @@
 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
 <script src="js/jquery.metadata.js"></script>
 <script src="js/jquery.tablesorter.min.js"></script>
-	<script>
+<script>
 		$(document).ready(function () {
 			$(".zapisz").hide();
 			$(".edytuj").click(function() {
@@ -19,7 +19,7 @@
 					osoba[name] = value;
 					$(this).html(value);
 				});
-				$.post('edit.php?id=' + $(this).attr('key'), osoba);
+				$.post('index.php?save&edit&id=' + $(this).attr('key'), osoba);
 				$("#lista").trigger("update"); 
 				var sorting = [[1,0]];
 				$("#lista").trigger("sorton",[sorting]); 
@@ -62,7 +62,7 @@
 												<td><img src="img/User-icon.png"  alt="" /></td>
 												<td class="val" name="nazwisko"><?= $osoba->nazwisko; ?></td>
 												<td class="val" name="imie"><?= $osoba->imie; ?></td>
-												<td><a href="save.php?remove=<?=$key?>">Usuń</td>
+												<td><a href="?save&remove=<?=$key?>">Usuń</td>
 												<td><a href="#" class="edytuj">Edytuj inline</a></td>
 												<td><a href="#" key="<?=$key?>" class="zapisz">Zapisz</a></td>
 												
