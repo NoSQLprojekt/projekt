@@ -1,20 +1,31 @@
 ﻿<?php
 /* Obsługa strony po stronie serwera */
 // Obiekt osoba
+class User{
+	public $login;
+	public $haslo;
+	public $email;
+	public function __construct($login = '', $haslo = '', $email = '') {
+		$this->login = $login;
+		$this->haslo = $haslo;
+		$this->email = $email;
+	}
+	public function getVars() {
+		return get_object_vars($this);
+	}
+}
 class Osoba{
-	public $userId;
 	public $imie;
 	public $nazwisko;
 	public $telefon;
 	public $adres;
 	public $email;
-	public function __construct($imie = '', $nazwisko = '', $telefon = '', $adres = '', $email = '', $userId = '') {
+	public function __construct($imie = '', $nazwisko = '', $telefon = '', $adres = '', $email = '') {
 		$this->imie = $imie;
 		$this->nazwisko = $nazwisko;
 		$this->telefon = $telefon;
 		$this->adres = $adres;
 		$this->email = $email;
-		$this->userId = $userId;
 	}
 	public function getVars() {
 		 return get_object_vars($this);
@@ -46,8 +57,7 @@ class baza{
 	public function ownQuery($query, $param = array()) {
 		return $this->dbcol->{$query}($param);
 	}
-	public function remove($criteria = array(), $options = array())
-	{
+	public function remove($criteria = array(), $options = array()) {
 		return $this->dbcol->remove($criteria, $options);
 	}
 	public function findOne($query = array(), $fields = array()) {
@@ -55,52 +65,30 @@ class baza{
 	}
 	
 }
-class Test{
-	public $baza;
+class dbUser{
+	var $baza;
 	public function __construct() {
 		$this->baza = new baza();
-		$this->baza->collection = 'test';
+		$this->baza->collection = 'user';
 		$this->baza->connect();
 	}
-	public function Test() {
-		/** Prosty CRUD **/
-		$this->baza->remove();
-		$this->baza->insert(array("Imie" => "Janek", "Nazwisko" => "Waśniewski"));
-		$this->baza->insert(array("Imie" => "Franek", "Nazwisko" => "Frankowski"));
-		/** Foreach iteracja na elementach zwracanych przez find() **/
-		// foreach($this->baza->find() as $key => $val) {
-			// var_dump($key);
-			// var_dump($val);
-		// }
-		/** Inna metoda poprzez iterator_to_array() : **/
-		$x = iterator_to_array($this->baza->find());
-		var_dump($x);
-		/** Update pierwszego elementu, dopisujemy ulice i numer  **/
-		$this->baza->update(array("_id" => new MongoId(key($x))), array('$set' => array("Ulica" => "Słoneczna", "Numer" => "15")));
-		/** key($x) wyświetla nam klucz pierwszego elementu z tablicy, jeżeli chcemy kolejny to możemy dać next($x) i wtedy key($x) nam zwróci kolejny element **/
-		/** wartości zwraca current($x) -- jest to też kolejny sposób na iterowanie po tablicy **/
-		echo '-------------------------------';
-		foreach($this->baza->find() as $one) {
-			var_dump($one);
+	public function createObjectFromArr($arr) {
+		$user = new User();
+		foreach($user->getVars() as $key => $val) {
+			// ta linijka odpowiada za przepisanie tablicy do obiektu
+			if($key == 'haslo')
+				@$user->{$key} = ($arr[$key])?(sha1($arr[$key])):'';
+			else
+				@$user->{$key} = ($arr[$key])?($arr[$key]):'';
 		}
-		/** A teraz usuńmy franka **/
-		$this->baza->remove(array("Imie" => "Franek", "Nazwisko" => "Frankowski"));
-		echo '-------------------------------';
-		foreach($this->baza->find() as $one) {
-			var_dump($one);
-		}
-		//var_dump($this->baza->ownQuery("findOne")); /** Własne polecenie, jeżeli brakuje czegoś w klasie baza co chcemy użyć to wystarczy, **/
-													/** że wpiszemy polecenie jak w przykładzie obok, tu akurat nie ma w klasie findOne() **/
+		return $user;
 	}
-	public function modelTestCrud() {
-		// Dodawanie przy użyciu naszego obiektu Osoba
-		// dodając z widoku dodajemy dane jako tablica która potem jest zmieniona na obiekt, przykład w index.php
-		$this->baza->remove();
-		$this->baza->insert(new Osoba("Michał", "Jackowski"));
-		// dopiszmy nr telefonu do naszej osoby
-		$this->baza->update(new Osoba("Michał", "Jackowski"), new Osoba("Michał", "Jackowski", "654123123"));
-		$x = iterator_to_array($this->baza->find());
-		var_dump($x);
+	public function checkLogin($login) {
+		$x = $this->baza->runCommand(array("count" => $this->baza->collection, "query" => array("login" => $login)));
+		return $x['n'];
+	}
+	public function add($arr) {
+		$this->baza->insert($this->createObjectFromArr($arr));
 	}
 }
 // kontroler db, to jego wywołujemy z pliku widoku
