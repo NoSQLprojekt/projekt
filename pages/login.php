@@ -9,9 +9,9 @@
 									<div id="login">
 										
 										<p>Login:</p>
-										<input type="text" name="s" id="login-text" value="" />
+										<input type="text" name="login" id="login-text" value="" />
 										<p>Hasło:</p>
-										<input type="password" name="s" id="login-text" value="" />
+										<input type="password" name="haslo" id="login-text" value="" />
 										<p><a href="?register">zarejestruj się</a></p>
 										<p class="submit">  
 											<input type="submit" value="Zaloguj" />  
