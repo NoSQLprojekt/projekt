@@ -5,7 +5,7 @@
 			
 			<div class="entry">
 					<h2 class="title">Logowanie</h2>
-								<form method="get" action="#">
+								<form method="post" action="index.php?login">
 									<div id="login">
 										
 										<p>Login:</p>
