@@ -16,6 +16,7 @@ if(isset($_GET['addUser']) && isset($_POST['submit'])) {
 	if ($dbuser->checkLogin($_POST['login']) == 0) {
 		$dbuser->add($_POST);
 		print "Udana rejestracja. Mozesz sie teraz zalogowac";
+		print("<a href=\"index.php?login"."\">Logowanie</a>");
 	}
 	else {
 		print "Taki login juz istnieje!!! Wybierz inny";
