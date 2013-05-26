@@ -87,6 +87,10 @@ class dbUser{
 		$x = $this->baza->runCommand(array("count" => $this->baza->collection, "query" => array("login" => $login)));
 		return $x['n'];
 	}
+	public function checkLoginPassword($login, $haslo) {
+		$x = $this->baza->runCommand(array("count" => $this->baza->collection, "query" => array("login" => $login, "haslo" => sha1($haslo))));
+		return $x['n'];
+	}
 	public function add($arr) {
 		$this->baza->insert($this->createObjectFromArr($arr));
 	}
