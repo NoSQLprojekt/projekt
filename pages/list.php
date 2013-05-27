@@ -8,7 +8,7 @@
 				$(this).parent().parent().find(".zapisz").show();
 				$(this).parent().parent().children(".val").each(function(i) {
 					var name = $(this).attr('name'), value = $(this).html();
-					$(this).html('<input type="text" value="' + value + '" name="' + name + '">');
+					$(this).html('<input type="text" size="20" value="' + value + '" name="' + name + '" style="width:120px">');
 				});
 			});
 			$(".zapisz").click(function() {
@@ -27,7 +27,7 @@
 			$("#lista").tablesorter({
 				widgets: ['zebra'],
 				sortList:[[1,0]],
-				headers:{0:{sorter: false}, 3:{sorter:false}, 4:{sorter:false}, 5:{sorter:false}}
+				headers:{0:{sorter: false}, 4:{sorter:false}, 5:{sorter:false}, 6:{sorter:false}}
 			}); 
 		});
 </script>
@@ -48,7 +48,7 @@
 													<th></th>
 													<th>Nazwisko</th>
 													<th>Imię</th>
-													
+													<th>Telefon</th>
 													<th>Akcje</th>
 													<th></th>
 													<th></th>
@@ -63,12 +63,12 @@
 												<td><img src="img/User-icon.png"  alt="" /></td>
 												<td class="val" name="nazwisko"><?= $osoba->nazwisko; ?></td>
 												<td class="val" name="imie"><?= $osoba->imie; ?></td>
-												<td class="val" name="telefon" style="display:none"><?=$osoba->telefon; ?></td>
+												<td class="val" name="telefon"><?=$osoba->telefon; ?></td>
 												<td class="val" name="adres" style="display:none"><?=$osoba->adres; ?></td>
 												<td class="val" name="email" style="display:none"><?=$osoba->email; ?></td>
 												<td class="val" name="userId" style="display:none"><?=$_SESSION['id']; ?></td>
 												<td><a href="?save&remove=<?=$key?>">Usuń</td>
-												<td><a href="#" class="edytuj">Edytuj inline</a></td>
+												<td><a href="#" class="edytuj">Edytuj</a></td>
 												<td><a href="#" key="<?=$key?>" class="zapisz">Zapisz</a></td>
 												
 												

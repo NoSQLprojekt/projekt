@@ -15,11 +15,10 @@ if(!empty($_GET['remove'])) {
 if(isset($_GET['addUser']) && isset($_POST['submit'])) {
 	if ($dbuser->checkLogin($_POST['login']) == 0) {
 		$dbuser->add($_POST);
-		print "Udana rejestracja. Mozesz sie teraz zalogowac";
-		print("<a href=\"index.php?login"."\">Logowanie</a>");
+		header("Location: ?login&good");
 	}
 	else {
-		print "Taki login juz istnieje!!! Wybierz inny";
+		header("Location: ?register&bad");
 	}
 }
 if(isset($_GET['edit']) && isset($_GET['id'])) {
@@ -31,13 +30,11 @@ if(isset($_GET['login']) && isset($_POST['submit'])){
 	$haslo=$_POST['haslo'];
 	$id = $dbuser->checkLoginPassword($_POST['login'], $_POST['haslo']);
 	if (!$id) {
-		print "Nieprawidłowe Dane!!!";
+		header("Location: ?login&bad");
 	}
 	else {
 		$_SESSION['id'] = $id->__toString();
 		$_SESSION['login']=$login;
-		print('Witaj na stronie <b>'.$_SESSION['login'].'</b>\n');
-		print('<a href="logout.php">Logout</a>');
 		header("Location: ?");
 	}
 }

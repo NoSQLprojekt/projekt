@@ -1,3 +1,20 @@
+label.error  {
+	background:url("../img/unchecked.gif") no-repeat 0px 0px;
+	padding-left: 16px;
+	padding-bottom: 2px;
+	font-weight: bold;
+	color: #EA5200;
+	display:block;
+}
+label.checked {
+	background:url("../img/checked.gif") no-repeat 0px 0px;
+}
+input.error {
+	border-color:red;
+}
+input.checked {
+	border-color:black;
+}
 .odd {
 	background-color:#ffffff;
 }
@@ -192,15 +209,7 @@ padding-top: 5px;
 padding-left: 0px;
 }
 
-#login{
-width: 380px;
-height: 370px;
-border:1px solid;
-margin-top:35px;
-border-color: lightgrey;
-padding-left:120px;
 
-}
 
 #adduser{
 width: 380px;
