@@ -7,7 +7,7 @@
 					<h2 class="title">Dodaj kontakt</h2>
 								<form method="post" action="index.php?save&add">
 									<div id="adduser">
-										
+										<input type="hidden" name="userId" value="<?=$_SESSION['id'];?>" />
 										<p>Imię:</p>
 										<input type="text" name="imie" id="login-text" value="" />
 										<p>Nazwisko:</p>

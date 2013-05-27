@@ -16,9 +16,10 @@ session_start();
 		<ul>
 			<li class="current_page_item"><a href="?">Strona Główna</a></li>
 			<li><a href="#">Statystyki</a></li>
-			<li><a href="?login">Logowanie</a></li>
-			<li><a href="?add">Dodaj kontakt</a></li>
+			<? if(!isset($_SESSION['login'])): ?> <li><a href="?login">Logowanie</a></li> <? endif; ?>
+			<? if(isset($_SESSION['login'])): ?><li><a href="?add">Dodaj kontakt</a></li>
 			<li><a href="?list">Lista kontaktów</a></li>
+			<li><a href="?logout">Wyloguj</a></li><? endif; ?>
 			
 		</ul>
 	</div>

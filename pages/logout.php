@@ -1,17 +1,9 @@
-<?session_start();
+<?
+unset($_SESSION["login"]);
+session_destroy();
 
-if($_SESSION['login']){
+header("Location: ?");
+//print "Zostałeś wylogowany\n\n";	
+//print("<a href=\"index.php?login"."\">Logowanie</a>");
 
-	unset($_SESSION["login"]);
-	
-	session_destroy();
-
-print "Zostałeś wylogowany\n\n";	
-print("<a href=\"index.php?login"."\">Logowanie</a>");
-}
-
-else{
-print "zaloguj sie\n\n";	
-print("<a href=\"index.php?login"."\">Logowanie</a>");
-}
 ?>

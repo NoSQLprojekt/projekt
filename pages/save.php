@@ -29,13 +29,17 @@ if(isset($_GET['edit']) && isset($_GET['id'])) {
 if(isset($_GET['login']) && isset($_POST['submit'])){
 	$login=$_POST['login'];
 	$haslo=$_POST['haslo'];
-	if ($dbuser->checkLoginPassword($_POST['login'], $_POST['haslo']) == 0) {
+	$id = $dbuser->checkLoginPassword($_POST['login'], $_POST['haslo']);
+	$id = $id->__toString();
+	if (!$id) {
 		print "Nieprawidłowe Dane!!!";
 	}
 	else {
-		$_SESSION["login"]=$login;
-		print("Witaj na stronie <b>".$_SESSION["login"]."</b>\n");
-		print("<a href=\"logout.php"."\">Logout</a>");
+		$_SESSION['id'] = $id;
+		$_SESSION['login']=$login;
+		print('Witaj na stronie <b>'.$_SESSION['login'].'</b>\n');
+		print('<a href="logout.php">Logout</a>');
+		header("Location: ?");
 	}
 }
 

@@ -15,12 +15,14 @@ class User{
 	}
 }
 class Osoba{
+	public $userId;
 	public $imie;
 	public $nazwisko;
 	public $telefon;
 	public $adres;
 	public $email;
-	public function __construct($imie = '', $nazwisko = '', $telefon = '', $adres = '', $email = '') {
+	public function __construct($userId = '', $imie = '', $nazwisko = '', $telefon = '', $adres = '', $email = '') {
+		$this->userId = $userId;
 		$this->imie = $imie;
 		$this->nazwisko = $nazwisko;
 		$this->telefon = $telefon;
@@ -42,8 +44,8 @@ class baza{
 		$this->db = $m->selectDB('test');
 		$this->dbcol = $this->db->selectCollection($this->collection);
 	}
-	public function find($query = "") {
-		return $this->dbcol->find();
+	public function find($query = array()) {
+		return $this->dbcol->find($query);
 	}
 	public function runCommand($query = array()) {
 		return $this->db->command($query);
@@ -89,7 +91,13 @@ class dbUser{
 	}
 	public function checkLoginPassword($login, $haslo) {
 		$x = $this->baza->runCommand(array("count" => $this->baza->collection, "query" => array("login" => $login, "haslo" => sha1($haslo))));
-		return $x['n'];
+		//var_dump($x);
+		if($x == 0) return false;
+		else {
+			$y = $this->baza->findOne(array("login" => $login, "haslo" => sha1($haslo)));
+			//var_dump($y);
+			return $y['_id'];
+		}
 	}
 	public function add($arr) {
 		$this->baza->insert($this->createObjectFromArr($arr));
@@ -121,7 +129,7 @@ class db{
 			$osoba = new Osoba();
 			$ret[$key] = $this->createObjectFromArr($val);
 		}
-		return $ret;
+		return @$ret;
 	}
 	// zakładamy że otrzymujemy tablice w postaci Imie => JakiesImie, Nazwisko => JakiesNazwisko itd
 	public function addOsoba($arr) {
@@ -139,7 +147,7 @@ class db{
 	public function deleteId($arr) {
 		$this->baza->remove($arr);
 	}
-	public function listOsoby($where = "") {
+	public function listOsoby($where = array()) {
 		return $this->createObjectFromArr2(iterator_to_array($this->baza->find($where)));
 	}
 	public function removeAll() {

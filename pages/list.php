@@ -36,7 +36,7 @@
 		<?php
 		require('class.inc.php');
 		$db = new db();
-		$osoby = $db->listOsoby();		?>
+		$osoby = $db->listOsoby(array('userId' => $_SESSION['id']));		?>
 			
 			<div class="entry">
 					<h2 class="title">Lista kontaków</h2>
@@ -56,19 +56,24 @@
 											</thead>
 											<tbody>
 
-												<?php foreach($osoby as $key => $val):	
+												<?php if(is_array($osoby)):
+												foreach($osoby as $key => $val):	
 												$osoba = $val; ?>
 												<tr>
 												<td><img src="img/User-icon.png"  alt="" /></td>
 												<td class="val" name="nazwisko"><?= $osoba->nazwisko; ?></td>
 												<td class="val" name="imie"><?= $osoba->imie; ?></td>
+												<td class="val" name="telefon" style="display:none"><?=$osoba->telefon; ?></td>
+												<td class="val" name="adres" style="display:none"><?=$osoba->adres; ?></td>
+												<td class="val" name="email" style="display:none"><?=$osoba->email; ?></td>
+												<td class="val" name="userId" style="display:none"><?=$_SESSION['id']; ?></td>
 												<td><a href="?save&remove=<?=$key?>">Usuń</td>
 												<td><a href="#" class="edytuj">Edytuj inline</a></td>
 												<td><a href="#" key="<?=$key?>" class="zapisz">Zapisz</a></td>
 												
 												
 												</tr>
-												<?php endforeach;  ?>
+												<?php endforeach; endif; ?>
 											</tbody>
 											</table>
 										
