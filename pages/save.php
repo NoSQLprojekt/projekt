@@ -30,12 +30,11 @@ if(isset($_GET['login']) && isset($_POST['submit'])){
 	$login=$_POST['login'];
 	$haslo=$_POST['haslo'];
 	$id = $dbuser->checkLoginPassword($_POST['login'], $_POST['haslo']);
-	$id = $id->__toString();
 	if (!$id) {
 		print "Nieprawidłowe Dane!!!";
 	}
 	else {
-		$_SESSION['id'] = $id;
+		$_SESSION['id'] = $id->__toString();
 		$_SESSION['login']=$login;
 		print('Witaj na stronie <b>'.$_SESSION['login'].'</b>\n');
 		print('<a href="logout.php">Logout</a>');
