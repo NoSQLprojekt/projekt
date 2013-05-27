@@ -16,10 +16,10 @@ session_start();
 		<ul>
 			<li class="current_page_item"><a href="?">Strona Główna</a></li>
 			<li><a href="#">Statystyki</a></li>
-			<? if(!isset($_SESSION['login'])): ?> <li><a href="?login">Logowanie</a></li> <? endif; ?>
-			<? if(isset($_SESSION['login'])): ?><li><a href="?add">Dodaj kontakt</a></li>
+			<?php if(!isset($_SESSION['login'])): ?> <li><a href="?login">Logowanie</a></li> <?php endif; ?>
+			<?php if(isset($_SESSION['login'])): ?><li><a href="?add">Dodaj kontakt</a></li>
 			<li><a href="?list">Lista kontaktów</a></li>
-			<li><a href="?logout">Wyloguj</a></li><? endif; ?>
+			<li><a href="?logout">Wyloguj</a></li><?php endif; ?>
 			
 		</ul>
 	</div>
