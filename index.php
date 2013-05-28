@@ -15,7 +15,7 @@ session_start();
 	<div id="menu">
 		<ul>
 			<li class="current_page_item"><a href="?">Strona Główna</a></li>
-			<li><a href="#">Statystyki</a></li>
+			<li><a href="?statistics">Statystyki</a></li>
 			<?php if(!isset($_SESSION['login'])): ?> <li><a href="?login">Logowanie</a></li> <?php endif; ?>
 			<?php if(isset($_SESSION['login'])): ?><li><a href="?add">Dodaj kontakt</a></li>
 			<li><a href="?list">Lista kontaktów</a></li>
