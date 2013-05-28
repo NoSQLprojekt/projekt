@@ -1,36 +1,7 @@
 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
 <script src="js/jquery.metadata.js"></script>
 <script src="js/jquery.tablesorter.min.js"></script>
-<script>
-		$(document).ready(function () {
-			$(".zapisz").hide();
-			$(".edytuj").click(function() {
-				$(this).parent().parent().find(".zapisz").show();
-				$(this).parent().parent().children(".val").each(function(i) {
-					var name = $(this).attr('name'), value = $(this).html();
-					$(this).html('<input type="text" size="20" value="' + value + '" name="' + name + '" style="width:120px">');
-				});
-			});
-			$(".zapisz").click(function() {
-				var osoba = new Object();
-				$(this).hide();
-				$(this).parent().parent().children(".val").each(function() {
-					var value = $(this).find("input").val(), name = $(this).find("input").attr('name');
-					osoba[name] = value;
-					$(this).html(value);
-				});
-				$.post('index.php?save&edit&id=' + $(this).attr('key'), osoba);
-				$("#lista").trigger("update"); 
-				var sorting = [[1,0]];
-				$("#lista").trigger("sorton",[sorting]); 
-			});
-			$("#lista").tablesorter({
-				widgets: ['zebra'],
-				sortList:[[1,0]],
-				headers:{0:{sorter: false}, 4:{sorter:false}, 5:{sorter:false}, 6:{sorter:false}}
-			}); 
-		});
-</script>
+<script src="js/tabelka.js"></script>
 <div id="content">
 	<div class="post">
 		<?php
@@ -63,7 +34,7 @@
 												foreach($osoby as $key => $val):	
 												$osoba = $val; ?>
 												<tr>
-												<td><img src="img/User-icon.png"  alt="" /></td>
+												<td><a href="?contact&id=<?=$key?>"><img src="img/User-icon.png"  alt="" /></a></td>
 												<td class="val" name="nazwisko"><?= $osoba->nazwisko; ?></td>
 												<td class="val" name="imie"><?= $osoba->imie; ?></td>
 												<td class="val" name="telefon"><?=$osoba->telefon; ?></td>

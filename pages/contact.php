@@ -1,8 +1,33 @@
+<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script>
+$(document).ready(function () {
+	$(".zapisz").hide();
+	$(".edytuj").click(function() {
+		$(".edytuj").hide();
+		$(".zapisz").show();
+		$("#background-image").find(".val").each(function(i) {
+			var name = $(this).attr('name'), value = $(this).html();
+			$(this).html('<input type="text" value="' + value + '" name="' + name + '" style="width:180px">');
+		});
+	});
+	$(".zapisz").click(function() {
+		var osoba = new Object();
+		$(this).hide();
+		$(".edytuj").show();
+		$("#background-image").find(".val").each(function() {
+			var value = $(this).find("input").val(), name = $(this).find("input").attr('name');
+			osoba[name] = value;
+			$(this).html(value);
+		});
+		$.post('index.php?save&edit&id=<?=$_GET['id']?>', osoba);
+	});
+});</script>
 <div id="content">
 	<div class="post">
 		<?php
 		require('class.inc.php');
 		$db = new db();
+		$osoba = $db->getOneOsoba(array("_id" => new MongoId($_GET['id'])));
 	?>
 			
 			<div class="entry">
@@ -38,9 +63,13 @@
 													   <td  class="val" name="email"><?= @$osoba->email; ?></td>
 													   
 													</tr>
-													
+													<td class="val" name="userId" style="display:none"><?=$_SESSION['id']; ?></td>
 												</tbody>
 											</table>
+											<p class="submit">  
+														<input class="edytuj" type="submit" name="submit" value="Edytuj" />  
+														<input class="zapisz" type="submit" name="submit" value="Zapisz" />  
+											</p>
 											
 											
 											
