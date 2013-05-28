@@ -12,9 +12,7 @@ echo $c;
 
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/dx.chartjs.js"></script>
-<script type="text/javascript" src="js/jquery.metadata.js"></script>
-
-		   
+	   
       <!-- ... -->
     <script type="text/javascript">
 		    var m2 =<?echo $c;?>;
