@@ -80,7 +80,70 @@ a {
 a:hover {
 }
 
+#tabela{
 
+margin-left:70px;
+height: 500px;
+
+
+
+}
+
+#background-image
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 20px;
+	margin: 45px;
+	width: 600px;
+	text-align: left;
+	border-collapse: collapse;
+	background: url('../img/person.png') 470px 120px no-repeat;
+	background-size:20% auto;
+}
+
+#background-image th
+{
+	padding: 12px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #339;
+}
+#background-image td
+{
+	padding: 9px 12px;
+	color: #669;
+	border-top: 1px solid #fff;
+}
+#background-image tfoot td
+{
+	font-size: 11px;
+}
+#background-image tbody td
+{
+	background: url('../img/back.png');
+}
+* html #background-image tbody td
+{
+	/* 
+	   ----------------------------
+		PUT THIS ON IE6 ONLY STYLE 
+		AS THE RULE INVALIDATES
+		YOUR STYLESHEET
+	   ----------------------------
+	*/
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='table-images/back.png',sizingMethod='crop');
+	background: none;
+}	
+#background-image tbody tr:hover td
+{
+	color: #339;
+	background: none;
+}
+
+#dl{
+width:150px;
+
+}
 
 /* Menu */
 
@@ -223,7 +286,7 @@ padding-left:120px;
 
 }
 
-table {
+table#lista{
     margin: 10px 0;
     border: #999 1px solid;
     width: 700px;
