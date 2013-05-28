@@ -277,10 +277,10 @@ padding-left: 0px;
 #adduser{
 width: 380px;
 
-border:1px solid;
+
 margin-top:35px;
-border-color: lightgrey;
-padding-left:120px;
+
+padding-left:100px;
 
 
 
@@ -325,9 +325,9 @@ table.standard td#akcje {
 #listuser{
 width: 760px;
 
-border:1px solid;
+
 margin-top:35px;
-border-color: lightgrey;
+
 padding-left:60px;
 }
 
@@ -345,9 +345,9 @@ padding-top:0px;
 
 width: 480px;
 height: 140px;
-border:1px solid;
+
 margin-top:7px;
-border-color: lightgrey;
+
 padding-left:20px;
 padding-top: 80px;
 
@@ -361,6 +361,9 @@ padding-top:15px;
 
 
 }
+
+
+
 
 #adduser p {
 padding-bottom: 10px;
