@@ -14,7 +14,7 @@
 			$(".zapisz").click(function() {
 				var osoba = new Object();
 				$(this).hide();
-				$(this).parent().parent().children(".val").each(function(i) {
+				$(this).parent().parent().children(".val").each(function() {
 					var value = $(this).find("input").val(), name = $(this).find("input").attr('name');
 					osoba[name] = value;
 					$(this).html(value);
@@ -52,6 +52,9 @@
 													<th>Akcje</th>
 													<th></th>
 													<th></th>
+													<th style="display:none"></th>
+													<th style="display:none"></th>
+													<th style="display:none"></th>
 												</tr>
 											</thead>
 											<tbody>
