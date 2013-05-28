@@ -1,3 +1,6 @@
+
+	<div class="post">
+		
 <h2 class="title">Statystyki</h2>
 
 <?php
@@ -5,8 +8,9 @@ require 'class.inc.php';
 $db = new db();
 @$osoby = $db->listOsoby(array('userId' => $_SESSION['id']));	
 $c  = count($osoby);
-echo "Łączna liczba adresów:  ";
-echo $c;
+?>
+ 
+<?php
 $out = $db->statistics();
 ?>
 
@@ -64,6 +68,7 @@ $out = $db->statistics();
 			});
 		});
 	</script>
+	
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
 		google.load("visualization", "1", {packages:["corechart"]});
@@ -77,16 +82,29 @@ $out = $db->statistics();
 		]);
 
 		var options = {
-		  title: '5 najbardziej popularnych imion'
+		  title: ''
 		};
 
 		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
 		chart.draw(data, options);
 		}
 	</script>
-	<div id="gaugeContainer" style="height:400px"></div>
-	<div id="chart_div" style="width: 900px; height: 500px;"></div>
 	
+	<p style="text-align: center;font-weight:bold;margin-bottom:60px;font-size:17px;">Łączna liczba kontaktów: <?php echo $c; ?></p>
+	<div id="gaugeContainer" style="height:400px"></div>
+	
+	
+	<p style="text-align:center;font-weight:bold;margin-top:150px;font-size:17px;" > 5 najbardziej popularnych imion </p>
+	<div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+	
+		
+	</div>
+	
+
+
+
+
 
 
 
