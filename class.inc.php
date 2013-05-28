@@ -65,6 +65,9 @@ class baza{
 	public function findOne($query = array(), $fields = array()) {
 		return $this->dbcol->findOne($query, $fields);
 	}
+	public function aggregate($arr) {
+		return $this->dbcol->aggregate($arr);
+	}
 	
 }
 class dbUser{
@@ -159,6 +162,25 @@ class db{
 	}
 	public function getOneOsoba($criteria = array(), $fields = array()) {
 		return $this->createObjectFromArr($this->baza->findOne($criteria, $fields));
+	}
+	public function statistics() {
+		$x = $this->baza->aggregate(array(
+			array(
+				'$group' => array(
+					'_id' => '$imie',
+					'suma' => array('$sum' => 1)
+				)
+			),
+			array(
+				'$sort' => array(
+					'suma' => -1
+				)
+			),
+			array(
+				'$limit' => 5
+			)
+		));
+		return $x['result'];
 	}
 }
 ?>

@@ -14,8 +14,8 @@
 		
 			
 			<div class="entry">
-				<?php if(isset($_GET['bad'])): ?><center><h1 style="color:red">Zły login lub hasło !!!</h1></center><? endif; ?>
-				<?php if(isset($_GET['good'])): ?><center><h1>Zarejestrowano poprawnie, zaloguj się</h1></center><? endif; ?>
+				<?php if(isset($_GET['bad'])): ?><center><h1 style="color:red">Zły login lub hasło !!!</h1></center><?php endif; ?>
+				<?php if(isset($_GET['good'])): ?><center><h1>Zarejestrowano poprawnie, zaloguj się</h1></center><?php endif; ?>
 					<h2 class="title">Logowanie</h2>
 								<form method="post" action="index.php?save&login" id="login">
 									<div id="login">
